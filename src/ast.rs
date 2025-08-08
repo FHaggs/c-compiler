@@ -2,13 +2,13 @@ use super::token::Token;
 
 #[derive(Debug)]
 pub struct Program {
-    function_definition: FunctionDefinition,
+    pub function_definition: FunctionDefinition,
 }
 
 #[derive(Debug)]
 pub struct FunctionDefinition {
-    name: Identifier,
-    body: Statement,
+    pub name: Identifier,
+    pub body: Statement,
 }
 
 #[derive(Debug)]

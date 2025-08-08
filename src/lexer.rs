@@ -13,7 +13,7 @@ pub fn tokenize(chars: impl Iterator<Item = char>) -> Vec<Token> {
 
     while let Some(c) = chars.peek() {
         match c {
-            '\n' | ' ' => {
+            '\n' | ' ' | '\t' => {
                 // Do nothing
                 chars.next();
             }

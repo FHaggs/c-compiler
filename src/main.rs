@@ -1,6 +1,7 @@
 use std::env;
 use std::fs::File;
 use std::io::{self, BufReader, Read};
+mod asm;
 mod ast;
 mod lexer;
 mod token;
@@ -26,7 +27,12 @@ fn main() -> io::Result<()> {
                     }
                 }
                 "--parse" => todo!(),
-                "--codegen" => todo!(),
+                "--codegen" => {
+                    let mut parser = ast::Parser::new(lexer::tokenize(c));
+                    let program = parser.parse_program();
+                    let asm = asm::codegen(program);
+                    println!("{:#?}", asm);
+                }
                 "--print" => {
                     let mut parser = ast::Parser::new(lexer::tokenize(c));
                     let program = parser.parse_program();
